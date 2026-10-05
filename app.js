@@ -1285,6 +1285,11 @@ function openPomodoroHistory(){
   const rows=ensurePomodoroHistory().slice().reverse();
   const body=rows.length?`<div class="item-list">${rows.map(x=>`<div class="list-item"><div class="module-icon small">🍅</div><div class="item-main"><strong>${Math.floor(Number(x.seconds||0)/60)} min de foco</strong><span>${esc(x.dateLabel||x.date||"")}</span></div><button type="button" class="ghost-button compact" data-action="delete-pomodoro-history" data-id="${esc(x.id)}" aria-label="Excluir registro">🗑</button></div>`).join("")}</div>`:`<p class="muted">Nenhuma sessão registrada ainda.</p>`;
   openModal("Histórico do Pomodoro",`${body}<div style="margin-top:14px"><button type="button" class="ghost-button" data-action="clear-pomodoro-history">🗑 Limpar histórico</button></div>`,{submit:"Fechar"});
+  modal.querySelector("#lidire-form").onsubmit=e=>{
+    e.preventDefault();
+    closeModal();
+  };
+}
 }
 function stopPomodoroInterval(){if(pomodoroState.interval){clearInterval(pomodoroState.interval);pomodoroState.interval=null;}}
 function togglePomodoro(){
