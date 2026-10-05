@@ -1290,7 +1290,7 @@ function openPomodoroHistory(){
     closeModal();
   };
 }
-}
+
 function stopPomodoroInterval(){if(pomodoroState.interval){clearInterval(pomodoroState.interval);pomodoroState.interval=null;}}
 function togglePomodoro(){
   if(pomodoroState.running){
